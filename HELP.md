@@ -1,12 +1,29 @@
 # Getting Started
 
 ## objects[万物皆对象]
+    通常除了前面提到的“特殊”数据类型 boolean、 char、 byte、 short、 int、 long、 float 和 double。通常来说，传递对象就意味者传递对象的引用。
     * 创建一个 String 引用
         String s;
     * 创建一个引用的同时进行初始化
         String s = "asdf";
     * 创建一个新的对象实例，通常我们使用new操作符来创建一个新对象
         String s = new String("asdf");
+    *数据存储
+        寄存器（Registers）最快的存储区域，位于 CPU 内部 ^2。
+        栈内存（Stack）存在于常规内存 RAM（随机访问存储器，Random Access Memory）区域中，可通过栈指针获得处理器的直接支持。栈指针下移分配内存，上移释放内存。
+        堆内存（Heap）这是一种通用的内存池（也在 RAM 区域），所有 Java 对象都存在于其中。
+        常量存储（Constant storage）常量值通常直接放在程序代码中，因为它们永远不会改变。
+        非 RAM 存储（Non-RAM storage）数据完全存在于程序之外，在程序未运行以及脱离程序控制后依然存在。
+    基本类型默认值
+        boolean	    false
+        char	    \u0000 (null)
+        byte	    (byte) 0
+        short	    (short) 0
+        int	        0
+        long	    0L
+        float	    0.0f
+        double	    0.0d
+        这些默认值仅在 Java 初始化类的时候才会被赋予。
     
 ## operators[运算符]
 
