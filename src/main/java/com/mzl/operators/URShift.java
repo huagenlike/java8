@@ -11,6 +11,7 @@ package com.mzl.operators;
 public class URShift {
     public static void main(String[] args) {
         int i = -1;
+        // 转换成二进制符
         System.out.println(Integer.toBinaryString(i));
         i >>>= 10;
         System.out.println(Integer.toBinaryString(i));
