@@ -26,6 +26,5 @@ public class PassObject {
         Letter y = new Letter();
         y.c = 'c';
         System.out.println("2: x.c: " + y.c);
-
     }
 }
