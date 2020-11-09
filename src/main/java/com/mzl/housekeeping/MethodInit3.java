@@ -8,7 +8,7 @@ package com.mzl.housekeeping;
  * @modified By:
  */
 public class MethodInit3 {
-    //- int j = g(i); // Illegal forward reference
+    // int j = g(i); // i还没有初始化，取消注释会报错
     int i = f();
 
     int f() {

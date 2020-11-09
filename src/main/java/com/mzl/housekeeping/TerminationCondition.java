@@ -38,7 +38,7 @@ public class TerminationCondition {
         novel.checkIn();
         // Drop the reference, forget to clean up:删除参考，忘记清理
         new Book(true);
-        // Force garbage collection & finalization: 强制进行终结动作
+        // 强制进行终结动作
         // 但是即使不这么做，只要重复地执行程序（假设程序将分配大量的存储空间而导致垃圾回收动作的执行），最终也能找出错误的 Book 对象。
         System.gc();
         new Nap(1); // One second delay

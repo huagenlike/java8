@@ -41,6 +41,7 @@ class Table {
 }
 
 class Cupboard {
+    // bowl3 每次加载 Cupboard 类，都会创建一遍，优先级低于静态方法
     Bowl bowl3 = new Bowl(3);
     static Bowl bowl4 = new Bowl(4);
 
