@@ -31,7 +31,7 @@ class Soup2 {
 public class Lunch {
     void testPrivate() {
         // Can't do this! Private constructor:
-        //- Soup1 soup = new Soup1();
+//         Soup1 soup = new Soup1();
     }
 
     void testStatic() {

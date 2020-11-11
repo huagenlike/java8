@@ -42,6 +42,7 @@ public class Detergent extends Cleanser {
         x.foam();
         System.out.println(x);
         System.out.println("Testing base class:");
+        // 显式地调用 Cleanser的 main 方法
         Cleanser.main(args);
     }
 }
