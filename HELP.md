@@ -459,7 +459,31 @@
         有两种类型的 List ：
             基本的 ArrayList ，擅长随机访问元素，但在 List 中间插入和删除元素时速度较慢。
             LinkedList ，它通过代价较低的在 List 中间进行的插入和删除操作，提供了优化的顺序访问。 LinkedList 对于随机访问来说相对较慢，但它具有比 ArrayList 更大的特征集。
-        
+    > 迭代器Iterators
+        一段通用代码，它不知道或不关心它正在使用什么类型的集合，因此它可以用于不同类型的集合，那么如何才能不重写代码就可以应用于不同类型的集合？
+        迭代器（也是一种设计模式）的概念实现了这种抽象。
+        Java 的 Iterator 只能单向移动。这个 Iterator 只能用来：
+            使用 iterator() 方法要求集合返回一个 Iterator。 Iterator 将准备好返回序列中的第一个元素。
+            使用 next() 方法获得序列中的下一个元素。
+            使用 hasNext() 方法检查序列中是否还有元素。
+            使用 remove() 方法将迭代器最近返回的那个元素删除。
+        >> ListIterator
+            ListIterator 是一个更强大的 Iterator 子类型，它只能由各种 List 类生成。 Iterator 只能向前移动，而 ListIterator 可以双向移动。
+            它可以生成迭代器在列表中指向位置的后一个和前一个元素的索引，并且可以使用 set() 方法替换它访问过的最近一个元素。
+            可以通过调用 listIterator() 方法来生成指向 List 开头处的 ListIterator ，还可以通过调用 listIterator(n) 创建一个一开始就指向列表索引号为 n 的元素处的 ListIterator 。
+    > 链表LinkedList
+        LinkedList 也像 ArrayList 一样实现了基本的 List 接口，但它在 List 中间执行插入和删除操作时比 ArrayList 更高效。然而,它在随机访问操作效率方面却要逊色一些。
+        LinkedList 还添加了一些方法，使其可以被用作栈、队列或双端队列（deque） 。
+            getFirst() 和 element() 是相同的，它们都返回列表的头部（第一个元素）而并不删除它，如果 List 为空，则抛出 NoSuchElementException 异常。 peek() 方法与这两个方法只是稍有差异，它在列表为空时返回 null 。
+            removeFirst() 和 remove() 也是相同的，它们删除并返回列表的头部元素，并在列表为空时抛出 NoSuchElementException 异常。 poll() 稍有差异，它在列表为空时返回 null 。
+            addFirst() 在列表的开头插入一个元素。
+            offer() 与 add() 和 addLast() 相同。 它们都在列表的尾部（末尾）添加一个元素。
+            removeLast() 删除并返回列表的最后一个元素。
+    > 堆栈Stack
+        堆栈是“后进先出”（LIFO）集合。它有时被称为叠加栈（pushdown stack），因为最后“压入”（push）栈的元素，第一个被“弹出”（pop）栈。
+    > 集合Set
+    
+            
 ## [函数式编程]
 
 ## [流式编程]
