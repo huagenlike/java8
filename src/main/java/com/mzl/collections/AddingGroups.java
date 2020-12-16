@@ -22,7 +22,7 @@ public class AddingGroups {
         // 产生一个由数组“支持”的列表：
         // 直接使用 Arrays.asList() 的输出作为一个 List ，但是这里的底层实现是数组，没法调整大小。
         List<Integer> list = Arrays.asList(16,17,18,19,20);
-        list.set(1, 99); // OK -- modify an element
+        list.set(1, 99); // OK -- 修改元素
         // list.add(21); // Runtime error; the underlying
         // array cannot be resized.
     }
