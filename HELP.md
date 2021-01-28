@@ -535,9 +535,45 @@
             2.Lambda 语法尽可能少，这正是为了使 Lambda 易于编写和使用。
         递归
             递归函数是一个自我调用的函数。可以编写递归的 Lambda 表达式，但需要注意：递归方法必须是实例变量或静态变量，否则会出现编译时错误。
-
+        方法引用
+            Java 8 方法引用没有历史包袱。方法引用组成：类名或对象名，后面跟 :: ，然后跟方法名称。
+        未绑定的方法引用
+            未绑定的方法引用是指没有关联对象的普通（非静态）方法。 使用未绑定的引用之前，我们必须先提供对象：
+    函数式接口
+        Lambda 表达式包含类型推导（编译器会自动推导出类型信息，避免了程序员显式地声明）。
+        以下是基本命名准则：
+            如果只处理对象而非基本类型，名称则为 Function，Consumer，Predicate 等。参数类型通过泛型添加。
+            如果接收的参数是基本类型，则由名称的第一部分表示，如 LongConsumer，DoubleFunction，IntPredicate 等，但基本 Supplier 类型例外。
+            如果返回值为基本类型，则用 To 表示，如 ToLongFunction <T> 和 IntToLongFunction。
+            如果返回值类型与参数类型一致，则是一个运算符：单个参数使用 UnaryOperator，两个参数使用 BinaryOperator。
+            如果接收两个参数且返回值为布尔值，则是一个谓词（Predicate）。
+            如果接收的两个参数类型不同，则名称中有一个 Bi。
+    多参数函数式接口
+        java.util.functional 中的接口是有限的。比如有了 BiFunction，但它不能变化。 如果需要三参数函数的接口怎么办？ 其实这些接口非常简单，很容易查看 Java 库源代码并自行创建。
+    缺少基本类型的函数
+    高阶函数
+        
+        
 ## [流式编程]
-
+    stream接口继承自BaseStream，其中IntStream, LongStream, DoubleStream对应三种基本类型（int, long, double，注意不是包装类型），Stream对应所有剩余类型的stream视图。
+    为不同数据类型设置不同stream接口，可以1.提高性能，2.增加特定接口函数。
+    虽然大部分情况下stream是容器调用Collection.stream()方法得到的，但stream和collections有以下不同：
+        无存储。stream不是一种数据结构，它只是某种数据源的一个视图，数据源可以是一个数组，Java容器或I/O channel等。
+        为函数式编程而生。对stream的任何修改都不会修改背后的数据源，比如对stream执行过滤操作并不会删除被过滤的元素，而是会产生一个不包含被过滤元素的新stream。
+        惰式执行。stream上的操作并不会立即执行，只有等到用户真正需要结果的时候才会执行。
+        可消费性。stream只能被“消费”一次，一旦遍历过就会失效，就像容器的迭代器那样，想要再次遍历必须重新生成。
+    对stream的操作分为为两类，中间操作(intermediate operations)和结束操作(terminal operations)，二者特点是：
+        中间操作总是会惰式执行，调用中间操作只会生成一个标记了该操作的新stream，仅此而已。
+        结束操作会触发实际计算，计算发生时会把所有中间操作积攒的操作以pipeline的方式执行，这样可以减少迭代次数。计算完成之后stream就会失效。
+    区分中间操作和结束操作最简单的方法，就是看方法的返回值，返回值为stream的大都是中间操作，否则是结束操作。
+    Stream接口的部分常见方法：
+        操作类型	    接口方法
+        中间操作	    concat() distinct() filter() flatMap() limit() map() peek()
+                    skip() sorted() parallel() sequential() unordered()
+        结束操作	    allMatch() anyMatch() collect() count() findAny() findFirst()
+                    forEach() forEachOrdered() max() min() noneMatch() reduce() toArray()
+    
+    
 ## [异常]
 
 ## [代码校验]

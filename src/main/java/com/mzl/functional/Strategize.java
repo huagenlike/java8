@@ -9,10 +9,10 @@ package com.mzl.functional;
  **/
 interface Strategy {
     // 提供了单一的 approach() 方法来承载函数式功能。
-    // 通过创建不同的 Strategy 对象，我们可以创建不同的行为。
     String approach(String msg);
 }
 
+// 传统上，我们通过创建一个实现 Strategy 接口的类来实现此行为，比如在 Soft。
 class Soft implements Strategy {
     public String approach(String msg) {
         return msg.toLowerCase() + "?";
@@ -43,8 +43,11 @@ public class Strategize {
     }
 
     public static void main(String[] args) {
+        // 通过创建不同的 Strategy 对象，我们可以创建不同的行为。
+        // 在创建数组的时候，以函数式编程实现了 Strategy 接口
         Strategy[] strategies = {
-                // [2] 一种略显简短且更自发的方法是创建一个匿名内部类。即使这样，仍有相当数量的冗余代码。你总是要仔细观察：“哦，原来这样，这里使用了匿名内部类。”
+                // [2] 一种略显简短且更自发的方法是创建一个匿名内部类。
+                // 即使这样，仍有相当数量的冗余代码。你总是要仔细观察：“哦，原来这样，这里使用了匿名内部类。”
                 new Strategy() { // [2]
                     public String approach(String msg) {
                         return msg.toUpperCase() + "!";
