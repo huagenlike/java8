@@ -56,7 +56,8 @@ public class Strategize {
                 // [3] Java 8 的 Lambda 表达式。由箭头 -> 分隔开参数和函数体，箭头左边是参数，箭头右侧是从 Lambda 返回的表达式，即函数体。这实现了与定义类、匿名内部类相同的效果，但代码少得多。
                 msg -> msg.substring(0, 5), // [3]
                 // [4] Java 8 的方法引用，由 :: 区分。在 :: 的左边是类或对象的名称，在 :: 的右边是方法的名称，但没有参数列表。
-                Unrelated::twice // [4]
+                Unrelated::twice, // [4]
+                msg1 -> msg1 + " hei hei "
         };
         Strategize s = new Strategize("Hello there");
         s.communicate();

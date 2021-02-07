@@ -10,10 +10,24 @@ package com.mzl.functional;
 public class RecursiveFibonacci {
     IntCall fib;
 
+    /**
+     * 无参构造方法内，用匿名函数实现了 IntCall 的方法
+     * 0    0    0
+     * 1    1   1
+     * 2    1   1 + 0 + 0
+     * 3    2   1 + 1
+     * 4    3
+     * 5    5
+     * 6    8
+     * 7    13
+     * 8    21
+     * 9    34
+     * 10   55
+     */
     RecursiveFibonacci() {
-        fib = n -> n == 0 ? 0 :
-                n == 1 ? 1 :
-                        fib.call(n - 1) + fib.call(n - 2);
+        fib = n -> {
+            return n == 0 ? 0 : n == 1 ? 1 : fib.call(n - 1) + fib.call(n - 2);
+        };
     }
 
     int fibonacci(int n) { return fib.call(n); }

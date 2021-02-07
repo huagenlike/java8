@@ -553,7 +553,6 @@
     缺少基本类型的函数
     高阶函数
         
-        
 ## [流式编程]
     stream接口继承自BaseStream，其中IntStream, LongStream, DoubleStream对应三种基本类型（int, long, double，注意不是包装类型），Stream对应所有剩余类型的stream视图。
     为不同数据类型设置不同stream接口，可以1.提高性能，2.增加特定接口函数。

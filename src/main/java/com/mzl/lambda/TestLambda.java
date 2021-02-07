@@ -417,7 +417,7 @@ public class TestLambda {
     // replaceAll()
     // 该方法签名为replaceAll(BiFunction<? super K,? super V,? extends V> function)，作用是对Map中的每个映射执行function指定的操作，并用function的执行结果替换原来的value，其中BiFunction是一个函数接口，里面有一个待实现方法R apply(T t, U u)．不要被如此多的函数接口吓到，因为使用的时候根本不需要知道他们的名字．
     // 需求：假设有一个数字到对应英文单词的Map，请将原来映射关系中的单词都转换成大写．
-    public static void mapReplaceAllDemo() {
+    public static void mapReplaceAlcomputeIfAbsentlDemo() {
         // Java7以及之前替换所有Map中所有映射关系
         HashMap<Integer, String> map = new HashMap<>();
         map.put(1, "one");
