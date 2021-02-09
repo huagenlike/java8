@@ -552,8 +552,31 @@
         java.util.functional 中的接口是有限的。比如有了 BiFunction，但它不能变化。 如果需要三参数函数的接口怎么办？ 其实这些接口非常简单，很容易查看 Java 库源代码并自行创建。
     缺少基本类型的函数
     高阶函数
+    下表描述了 java.util.function 中的目标类型（包括例外情况）：
+    
+    name	        type	            description
+    Runnable        Runnable            无参数，无返回值
+    Supplier	    Supplier< T >	    无参数，返回类型任意
+                    BooleanSupplier
+                    IntSupplier
+                    LongSupplier
+                    DoubleSupplier
+    Callable	    Callable< V >	    无参数，返回类型任意
+    
+    Consumer	    Consumer< T >	    接收T对象，不返回值
+                    IntConsumer
+                    LongConsumer
+                    DoubleConsumer
+    BiConsumer	    BiConsumer<T, U>	接收T对象和U对象，不返回值
+    Predicate	    Predicate< T >	    接收T对象并返回boolean
+    Function	    Function< T, R >	接收T对象，返回R对象
+    UnaryOperator	UnaryOperator< T >	接收T对象，返回T对象
+    BiPredicate	    BiPredicate<T, U>	接收T对象和U对象，返回boolean
+    BiFunction	    BiFunction<T, U, R>	接收T对象和U对象，返回R对象
+    BinaryOperator	BinaryOperator< T >	接收两个T对象，返回T对象
+    
         
-## [流式编程]
+## * streams [流式编程] *
     stream接口继承自BaseStream，其中IntStream, LongStream, DoubleStream对应三种基本类型（int, long, double，注意不是包装类型），Stream对应所有剩余类型的stream视图。
     为不同数据类型设置不同stream接口，可以1.提高性能，2.增加特定接口函数。
     虽然大部分情况下stream是容器调用Collection.stream()方法得到的，但stream和collections有以下不同：
@@ -571,7 +594,16 @@
                     skip() sorted() parallel() sequential() unordered()
         结束操作	    allMatch() anyMatch() collect() count() findAny() findFirst()
                     forEach() forEachOrdered() max() min() noneMatch() reduce() toArray()
-    
+    流支持
+        Java 8 采用的解决方案是：在接口中添加被 default（默认）修饰的方法。
+        通过这种方案，设计者们可以将流式（stream）方法平滑地嵌入到现有类中。
+        流操作的类型有三种：创建流，修改流元素（中间操作， Intermediate Operations），消费流元素（终端操作， Terminal Operations）。
+        最后一种类型通常意味着收集流元素（通常是到集合中）。
+    流创建
+        你可以通过 Stream.of() 很容易地将一组元素转化成为流（Bubble 类在本章的后面定义）
+    iterate()
+        Stream.iterate() 以种子（第一个参数）开头，并将其传给方法（第二个参数）。
+        方法的结果将添加到流，并存储作为第一个参数用于下次调用 iterate()，依次类推。我们可以利用 iterate() 生成一个斐波那契数列。
     
 ## [异常]
 

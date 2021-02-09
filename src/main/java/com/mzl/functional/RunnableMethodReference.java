@@ -7,6 +7,8 @@ package com.mzl.functional;
  * @data：2021/1/27 10:03
  * @Version：1.0
  * 方法引用与 Runnable 接口的结合使用
+ * Thread 对象将 Runnable 作为其构造函数参数，并具有会调用 run() 的方法 start()。
+ * 注意，只有匿名内部类才需要具有名为 run() 的方法。
  **/
 class Go {
     static void go() {

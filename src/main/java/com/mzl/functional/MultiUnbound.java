@@ -22,8 +22,7 @@ interface ThreeArgs {
 }
 
 interface FourArgs {
-    void call4(
-            This athis, int i, double d, String s, char c);
+    void call4(This athis, int i, double d, String s, char c);
 }
 
 public class MultiUnbound {
@@ -32,6 +31,7 @@ public class MultiUnbound {
         ThreeArgs threeargs = This::three;
         FourArgs fourargs = This::four;
         This athis = new This();
+        // 因为不是静态方法，所以需要new一个自己，传过去调用方法
         twoargs.call2(athis, 11, 3.14);
         threeargs.call3(athis, 11, 3.14, "Three");
         fourargs.call4(athis, 11, 3.14, "Four", 'Z');
